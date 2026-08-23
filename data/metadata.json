@@ -1,13 +1,14 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-23T02:58:42Z",
+  "generated_at": "2026-08-23T03:53:58Z",
   "project": {
     "name": "Marsden Valley Trapping Group",
     "about": {
       "source_path": "docs/project_about.md",
       "source_format": ".md",
-      "content_markdown": "#\n\nThe Marsden Valley Trapping Group runs community trapping activity in Marsden Valley New Zealand and uses this dashboard to publish public trapping trends from Trap.NZ data.\nFollow the group on [the Marsden Valley Trapping Group Facebook page](https://www.facebook.com/groups/991610803052734/).\n\nThis site focuses on simple views of catch history:\n\n- weekly catches for the selected species and period\n- same-species comparison across available years\n- summary totals and trend indicators for rolling periods and calendar years\n\nThe current dashboard is intended as a public summary view rather than a full operational analysis tool."
-    }
+      "content_markdown": "# The Marsden Valley Trapping Group \n\nOur group runs community trapping activity in Marsden Valley New Zealand and uses this dashboard to publish public trapping trends from Trap.NZ data.\nFollow the group on [the Marsden Valley Trapping Group Facebook page](https://www.facebook.com/groups/991610803052734/).\n\nThis site focuses on simple views of catch history:\n\n- weekly catches for the selected species and period\n- same-species comparison across available years\n- summary totals and trend indicators for rolling periods and calendar years\n\nThe current dashboard is intended as a public summary view rather than a full operational analysis tool."
+    },
+    "last_code_push_at": "2026-08-23T15:51:20+12:00"
   },
   "source": {
     "project": "Marsden Valley Trapping Group",
@@ -21,8 +22,8 @@
         "file_count": 8,
         "included_in_publish": true,
         "last_attempt_status": "fresh_fetch",
-        "last_attempted_at_utc": "2026-08-23T02:58:23Z",
-        "last_successful_fetch_at_utc": "2026-08-23T02:58:23Z",
+        "last_attempted_at_utc": "2026-08-23T03:53:40Z",
+        "last_successful_fetch_at_utc": "2026-08-23T03:53:40Z",
         "refresh_mode": "merge_recent",
         "query_names": [
           "recent_records",
@@ -33,7 +34,7 @@
           "age_days": 0.0,
           "fresh_days": 7,
           "stale_fallback_days": 10,
-          "reference_at_utc": "2026-08-23T02:58:23Z"
+          "reference_at_utc": "2026-08-23T03:53:40Z"
         }
       },
       "bird_sightings": {
@@ -43,15 +44,15 @@
         "selected_source_reason": "fresh_api_fetch",
         "included_in_publish": true,
         "last_attempt_status": "fresh_fetch",
-        "last_attempted_at_utc": "2026-08-23T02:58:39Z",
-        "last_successful_fetch_at_utc": "2026-08-23T02:58:39Z",
-        "row_count": 121,
+        "last_attempted_at_utc": "2026-08-23T03:53:55Z",
+        "last_successful_fetch_at_utc": "2026-08-23T03:53:55Z",
+        "row_count": 122,
         "freshness": {
           "status": "fresh",
           "age_days": 0.0,
           "fresh_days": 21,
           "stale_fallback_days": 31,
-          "reference_at_utc": "2026-08-23T02:58:39Z"
+          "reference_at_utc": "2026-08-23T03:53:55Z"
         }
       }
     },
