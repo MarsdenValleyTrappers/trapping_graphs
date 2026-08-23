@@ -84,7 +84,10 @@
               </span>
             </label>
             <p id="weekly-subtitle" class="chart-subtitle"></p>
-            <button class="chart-expand-button" type="button" data-chart-target="weekly-panel">Expand</button>
+            <button class="chart-expand-button icon-button" type="button" data-chart-target="weekly-panel" title="Open this chart in the expanded view" aria-label="Open this chart in the expanded view">
+              <img class="button-icon" src="assets/expand.svg" alt="" aria-hidden="true">
+              <span class="visually-hidden">Expand</span>
+            </button>
           </div>
         </div>
         <div class="chart-frame" id="weekly-panel">
@@ -100,7 +103,14 @@
           </div>
           <div class="chart-actions">
             <p class="chart-subtitle">Weekly shape with monthly date markers</p>
-            <button class="chart-expand-button" type="button" data-chart-target="comparison-panel">Expand</button>
+            <button id="comparison-clear-button" class="chart-action-button icon-button" type="button" title="Hide all years from this comparison chart" aria-label="Hide all years from this comparison chart">
+              <img class="button-icon" src="assets/Clear_graphs.svg" alt="" aria-hidden="true">
+              <span class="visually-hidden">Clear</span>
+            </button>
+            <button class="chart-expand-button icon-button" type="button" data-chart-target="comparison-panel" title="Open this chart in the expanded view" aria-label="Open this chart in the expanded view">
+              <img class="button-icon" src="assets/expand.svg" alt="" aria-hidden="true">
+              <span class="visually-hidden">Expand</span>
+            </button>
           </div>
         </div>
         <div class="comparison-toolbar">
@@ -123,7 +133,10 @@
           <h2 id="overlay-title">Chart</h2>
         </div>
         <div class="overlay-actions">
-          <button id="overlay-close" class="chart-expand-button" type="button">Close</button>
+          <button id="overlay-close" class="chart-expand-button icon-button" type="button" title="Close the expanded chart view" aria-label="Close the expanded chart view">
+            <img class="button-icon" src="assets/collapse.svg" alt="" aria-hidden="true">
+            <span class="visually-hidden">Close</span>
+          </button>
         </div>
       </div>
       <div id="overlay-weekly-toolbar" class="overlay-toolbar" hidden>
@@ -135,6 +148,12 @@
         </label>
       </div>
       <div id="overlay-comparison-toolbar" class="comparison-toolbar overlay-comparison-toolbar" hidden>
+        <div class="overlay-comparison-actions">
+          <button id="overlay-comparison-clear-button" class="chart-action-button icon-button" type="button" title="Hide all years from this comparison chart" aria-label="Hide all years from this comparison chart">
+            <img class="button-icon" src="assets/Clear_graphs.svg" alt="" aria-hidden="true">
+            <span class="visually-hidden">Clear</span>
+          </button>
+        </div>
         <div id="overlay-year-toggle-group" class="year-toggle-group" aria-label="Choose years to compare in expanded view"></div>
       </div>
       <div id="overlay-chart-host" class="chart-overlay-host"></div>
@@ -149,7 +168,10 @@
           <p class="section-label">Project information</p>
           <h2 id="project-info-title">About this project</h2>
         </div>
-        <button id="project-info-close" class="chart-expand-button" type="button">Close</button>
+        <button id="project-info-close" class="chart-expand-button icon-button" type="button" title="Close the project information panel" aria-label="Close the project information panel">
+          <img class="button-icon" src="assets/close.svg" alt="" aria-hidden="true">
+          <span class="visually-hidden">Close</span>
+        </button>
       </div>
       <div class="info-overlay-body">
         <div id="project-info-content" class="info-copy"></div>

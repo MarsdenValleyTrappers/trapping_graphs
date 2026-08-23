@@ -529,10 +529,61 @@ select:focus {
   transition: transform 140ms ease, border-color 140ms ease, background-color 140ms ease;
 }
 
-.chart-expand-button:hover {
+.chart-action-button {
+  border: 1px solid rgba(33, 48, 40, 0.14);
+  background: rgba(255, 250, 242, 0.92);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: transform 140ms ease, border-color 140ms ease, background-color 140ms ease, color 140ms ease, opacity 140ms ease;
+}
+
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  min-height: 42px;
+  padding: 9px;
+}
+
+.button-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.chart-expand-button:hover,
+.chart-action-button:hover {
   transform: translateY(-1px);
   border-color: rgba(44, 122, 93, 0.35);
   background: #fffdf8;
+}
+
+.chart-action-button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.chart-action-button:disabled:hover {
+  transform: none;
+  border-color: rgba(33, 48, 40, 0.14);
+  background: rgba(255, 250, 242, 0.92);
 }
 
 .comparison-toolbar {
@@ -541,6 +592,10 @@ select:focus {
 
 .overlay-comparison-toolbar {
   margin: -2px 0 14px;
+}
+
+.overlay-comparison-actions {
+  margin-bottom: 12px;
 }
 
 .year-toggle-group {
@@ -722,6 +777,31 @@ canvas {
   border-radius: 18px;
   border: 1px solid rgba(33, 48, 40, 0.08);
   background: rgba(255, 250, 242, 0.76);
+}
+
+.project-meta-block {
+  margin-top: 8px;
+}
+
+.project-meta-list {
+  margin: 10px 0 0;
+}
+
+.project-meta-row {
+  display: grid;
+  grid-template-columns: minmax(170px, 220px) 1fr;
+  gap: 12px;
+  padding: 6px 0;
+}
+
+.project-meta-row dt,
+.project-meta-row dd {
+  margin: 0;
+}
+
+.project-meta-row dt {
+  color: var(--muted);
+  font-weight: 600;
 }
 
 .info-reference {

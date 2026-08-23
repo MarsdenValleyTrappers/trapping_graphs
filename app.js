@@ -490,6 +490,12 @@ function getDefaultSelectedYears() {
   return years.slice(Math.max(0, years.length - 4));
 }
 
+function clearSelectedYears() {
+  state.selectedYears = [];
+  renderYearButtons();
+  buildComparisonChart(state.selectedSpecies);
+}
+
 function renderYearButtons() {
   const containers = [
     document.getElementById("year-toggle-group"),
@@ -501,10 +507,14 @@ function renderYearButtons() {
 
     years.forEach((year) => {
       const button = document.createElement("button");
+      const isSelected = state.selectedYears.includes(year);
       button.type = "button";
-      button.className = `year-toggle${state.selectedYears.includes(year) ? " is-active" : ""}`;
+      button.className = `year-toggle${isSelected ? " is-active" : ""}`;
       button.textContent = year;
-      button.setAttribute("aria-pressed", state.selectedYears.includes(year) ? "true" : "false");
+      button.setAttribute("aria-pressed", isSelected ? "true" : "false");
+      button.title = isSelected
+        ? `Hide ${year} from the comparison chart`
+        : `Show ${year} on the comparison chart`;
       button.addEventListener("click", () => {
         const isSelected = state.selectedYears.includes(year);
         if (isSelected && state.selectedYears.length === 1) {
@@ -518,6 +528,22 @@ function renderYearButtons() {
       });
       container.appendChild(button);
     });
+  });
+
+  [
+    document.getElementById("comparison-clear-button"),
+    document.getElementById("overlay-comparison-clear-button"),
+  ].filter(Boolean).forEach((button) => {
+    button.disabled = state.selectedYears.length === 0;
+  });
+}
+
+function bindComparisonControls() {
+  [
+    document.getElementById("comparison-clear-button"),
+    document.getElementById("overlay-comparison-clear-button"),
+  ].filter(Boolean).forEach((button) => {
+    button.addEventListener("click", clearSelectedYears);
   });
 }
 
@@ -613,6 +639,32 @@ function renderMarkdown(markdown) {
   flushParagraph();
   flushList();
   return html.join("");
+}
+
+function buildProjectInfoMeta(project) {
+  if (!project) {
+    return "";
+  }
+
+  const rows = [
+    {
+      label: "Build date",
+      value: project.last_code_push_at ? formatFriendlyDateTime(project.last_code_push_at) : "Unknown",
+    },
+  ].filter((row) => row.value);
+
+  if (rows.length === 0) {
+    return "";
+  }
+
+  return `
+    <section class="info-reference-block project-meta-block" aria-label="Build information">
+      <p class="section-label">Build Information</p>
+      <dl class="project-meta-list">
+        ${rows.map((row) => `<div class="project-meta-row"><dt>${escapeHtml(row.label)}</dt><dd>${escapeHtml(row.value)}</dd></div>`).join("")}
+      </dl>
+    </section>
+  `;
 }
 
 function openProjectInfo() {
@@ -811,9 +863,8 @@ function populateMeta() {
   const projectName = state.metadata.project && state.metadata.project.name
     ? state.metadata.project.name
     : state.metadata.source.project;
-  const about = state.metadata.project && state.metadata.project.about
-    ? state.metadata.project.about
-    : {};
+  const project = state.metadata.project || {};
+  const about = project.about ? project.about : {};
   const aboutContent = document.getElementById("project-info-content");
   const aboutTitle = document.getElementById("project-info-title");
   const infoButton = document.getElementById("project-info-button");
@@ -828,7 +879,7 @@ function populateMeta() {
   }
 
   if (aboutContent) {
-    aboutContent.innerHTML = renderMarkdown(about.content_markdown || about.summary || "");
+    aboutContent.innerHTML = `${renderMarkdown(about.content_markdown || about.summary || "")}${buildProjectInfoMeta(project)}`;
   }
   if (infoButton) {
     infoButton.hidden = !about.content_markdown && !about.summary;
@@ -857,6 +908,7 @@ async function init() {
     populateMeta();
     populateFilters();
     renderYearButtons();
+    bindComparisonControls();
     bindChartOverlayControls();
     bindProjectInfoControls();
     renderDashboard();
