@@ -641,6 +641,42 @@ function renderMarkdown(markdown) {
   return html.join("");
 }
 
+function normalizeComparableHeadingText(value) {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/^the\s+/, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function stripDuplicateProjectHeading(markdown, projectName) {
+  if (!markdown || !markdown.trim()) {
+    return markdown;
+  }
+
+  const lines = markdown.replace(/\r\n/g, "\n").split("\n");
+  const firstContentIndex = lines.findIndex((line) => line.trim());
+  if (firstContentIndex === -1) {
+    return markdown;
+  }
+
+  const headingMatch = lines[firstContentIndex].trim().match(/^#{1,3}\s+(.*)$/);
+  if (!headingMatch) {
+    return markdown;
+  }
+
+  if (normalizeComparableHeadingText(headingMatch[1]) !== normalizeComparableHeadingText(projectName)) {
+    return markdown;
+  }
+
+  lines.splice(firstContentIndex, 1);
+  if (lines[firstContentIndex] === "") {
+    lines.splice(firstContentIndex, 1);
+  }
+  return lines.join("\n");
+}
+
 function buildProjectInfoMeta(project) {
   if (!project) {
     return "";
@@ -649,7 +685,9 @@ function buildProjectInfoMeta(project) {
   const rows = [
     {
       label: "Build date",
-      value: project.last_code_push_at ? formatFriendlyDateTime(project.last_code_push_at) : "Unknown",
+      value: project.last_code_push_at
+        ? formatFriendlyDateTime(project.last_code_push_at)
+        : (state.metadata && state.metadata.generated_at ? formatFriendlyDateTime(state.metadata.generated_at) : "Unknown"),
     },
   ].filter((row) => row.value);
 
@@ -879,7 +917,8 @@ function populateMeta() {
   }
 
   if (aboutContent) {
-    aboutContent.innerHTML = `${renderMarkdown(about.content_markdown || about.summary || "")}${buildProjectInfoMeta(project)}`;
+    const aboutMarkdown = stripDuplicateProjectHeading(about.content_markdown || about.summary || "", projectName);
+    aboutContent.innerHTML = `${renderMarkdown(aboutMarkdown)}${buildProjectInfoMeta(project)}`;
   }
   if (infoButton) {
     infoButton.hidden = !about.content_markdown && !about.summary;
