@@ -16,6 +16,7 @@ const state = {
   expandedChartId: null,
   expandedChartParent: null,
   isProjectInfoOpen: false,
+  openFreshnessSourceKey: null,
 };
 
 const YEAR_PALETTE = [
@@ -53,6 +54,159 @@ function formatFriendlyDateTime(dateString) {
     hour: "numeric",
     minute: "2-digit",
   });
+}
+
+function titleCaseWords(value) {
+  return String(value || "")
+    .split(/[_\s-]+/)
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
+function getFreshnessStatusLabel(status) {
+  if (status === "unavailable") {
+    return "Unavailable";
+  }
+  if (!status) {
+    return "Unknown";
+  }
+  return titleCaseWords(status);
+}
+
+function getFreshnessPresentation(sourceInfo) {
+  const freshness = sourceInfo && sourceInfo.freshness ? sourceInfo.freshness : {};
+  const status = freshness.status || null;
+  const hasAttemptData = Boolean(
+    sourceInfo && (sourceInfo.last_attempted_at_utc || sourceInfo.last_successful_fetch_at_utc || sourceInfo.last_attempt_status)
+  );
+  const hasFreshnessData = Boolean(
+    freshness && (
+      freshness.reference_at_utc ||
+      typeof freshness.age_days === "number" ||
+      typeof freshness.fresh_days === "number" ||
+      typeof freshness.stale_fallback_days === "number"
+    )
+  );
+
+  if (status === "fresh") {
+    return { status: "fresh", tone: "fresh" };
+  }
+  if (status === "stale" || status === "stale_fallback") {
+    return { status, tone: "stale" };
+  }
+  if (status === "unknown") {
+    return { status: "unknown", tone: "unknown" };
+  }
+  if (!hasAttemptData && !hasFreshnessData) {
+    return { status: "unavailable", tone: "unavailable" };
+  }
+  return { status: status || "unknown", tone: "unknown" };
+}
+
+function getSourceDisplayName(sourceKey) {
+  const labels = {
+    trapnz: "Trap.NZ",
+    bird_sightings: "Birds",
+  };
+  return labels[sourceKey] || titleCaseWords(sourceKey);
+}
+
+function getAttemptStatusLabel(status) {
+  const labels = {
+    fresh_fetch: "Fresh fetch",
+    stale_fallback: "Stale fallback",
+    cached_fallback: "Cached fallback",
+    skipped: "Skipped",
+    failed: "Failed",
+  };
+  return labels[status] || titleCaseWords(status || "unknown");
+}
+
+function formatAgeDays(ageDays) {
+  if (typeof ageDays !== "number" || Number.isNaN(ageDays)) {
+    return null;
+  }
+  if (ageDays < 1) {
+    return "Updated today";
+  }
+  const roundedDays = Math.round(ageDays);
+  return `${roundedDays} day${roundedDays === 1 ? "" : "s"} old`;
+}
+
+function buildFreshnessToggle(sourceKey, sourceInfo) {
+  const sourceName = getSourceDisplayName(sourceKey);
+  const freshness = sourceInfo && sourceInfo.freshness ? sourceInfo.freshness : {};
+  const presentation = getFreshnessPresentation(sourceInfo);
+  const status = presentation.status;
+  const tone = presentation.tone;
+  const successfulAt = sourceInfo ? sourceInfo.last_successful_fetch_at_utc : null;
+  const attemptedAt = sourceInfo ? sourceInfo.last_attempted_at_utc : null;
+  const ageLabel = formatAgeDays(freshness.age_days);
+  const attemptLabel = getAttemptStatusLabel(sourceInfo ? sourceInfo.last_attempt_status : null);
+  const timestampLabel = successfulAt
+    ? `Last good update ${formatFriendlyDateTime(successfulAt)}`
+    : attemptedAt
+      ? `Last attempt ${formatFriendlyDateTime(attemptedAt)}`
+      : "No source attempt recorded";
+  const thresholdLabel = typeof freshness.fresh_days === "number"
+    ? `Fresh for ${freshness.fresh_days} day${freshness.fresh_days === 1 ? "" : "s"}`
+    : "Freshness threshold unavailable";
+  const isOpen = state.openFreshnessSourceKey === sourceKey;
+
+  return `
+    <article class="freshness-item freshness-item--${tone}${isOpen ? " is-open" : ""}">
+      <button
+        type="button"
+        class="freshness-toggle freshness-toggle--${tone}"
+        data-source-key="${escapeHtml(sourceKey)}"
+        aria-expanded="${isOpen ? "true" : "false"}"
+      >
+        <span class="freshness-toggle-label">${escapeHtml(sourceName)}</span>
+        <span class="freshness-toggle-status freshness-toggle-status--${tone}">${escapeHtml(getFreshnessStatusLabel(status))}</span>
+      </button>
+      <div class="freshness-detail"${isOpen ? "" : " hidden"}>
+        <p class="freshness-timestamp">${escapeHtml(timestampLabel)}</p>
+        <div class="freshness-metrics">
+          <p class="freshness-age">${escapeHtml(ageLabel || "Age unavailable")}</p>
+          <p class="freshness-attempt">Attempt: ${escapeHtml(attemptLabel)}</p>
+        </div>
+        <p class="freshness-threshold">${escapeHtml(thresholdLabel)}</p>
+      </div>
+    </article>
+  `;
+}
+
+function bindFreshnessPanelControls() {
+  document.querySelectorAll(".freshness-toggle[data-source-key]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const sourceKey = button.dataset.sourceKey;
+      state.openFreshnessSourceKey = state.openFreshnessSourceKey === sourceKey ? null : sourceKey;
+      renderFreshnessPanel();
+    });
+  });
+}
+
+function renderFreshnessPanel() {
+  const freshnessStrip = document.getElementById("freshness-strip");
+  if (!freshnessStrip) {
+    return;
+  }
+
+  const sources = state.metadata && state.metadata.source && state.metadata.source.sources
+    ? state.metadata.source.sources
+    : {};
+  const entries = Object.entries(sources);
+
+  if (entries.length === 0) {
+    freshnessStrip.innerHTML = '<p class="freshness-empty">No source freshness data published yet.</p>';
+    return;
+  }
+
+  freshnessStrip.innerHTML = entries
+    .map(([sourceKey, sourceInfo]) => buildFreshnessToggle(sourceKey, sourceInfo))
+    .join("");
+  bindFreshnessPanelControls();
 }
 
 function formatMonthDayLabel(dateValue) {
@@ -667,6 +821,7 @@ function populateMeta() {
   document.getElementById("hero-project-name").textContent = projectName;
   document.getElementById("hero-title").textContent = `Trapping trends ${formatFriendlyDate(state.metadata.date_range.start)} to ${formatFriendlyDate(state.metadata.date_range.end)}`;
   document.getElementById("hero-published").textContent = `Published ${formatFriendlyDateTime(state.metadata.generated_at)}`;
+  renderFreshnessPanel();
 
   if (aboutTitle) {
     aboutTitle.textContent = `About ${projectName}`;

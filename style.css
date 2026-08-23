@@ -90,6 +90,153 @@ body {
   font-size: 0.98rem;
 }
 
+.freshness-panel-header {
+  display: flex;
+  margin-bottom: 14px;
+}
+
+.freshness-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.freshness-item {
+  width: 100%;
+}
+
+.freshness-item.is-open {
+  width: 100%;
+}
+
+.freshness-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(33, 48, 40, 0.12);
+  background: linear-gradient(180deg, rgba(255, 252, 247, 0.98) 0%, rgba(241, 248, 244, 0.96) 100%);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(68, 52, 33, 0.08);
+  transition: transform 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.freshness-toggle:hover,
+.freshness-toggle:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(44, 122, 93, 0.3);
+  box-shadow: 0 14px 28px rgba(68, 52, 33, 0.12);
+}
+
+.freshness-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(44, 122, 93, 0.12), 0 14px 28px rgba(68, 52, 33, 0.12);
+}
+
+.freshness-toggle-label {
+  font-family: "Fraunces", serif;
+  font-size: 1rem;
+}
+
+.freshness-toggle-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.freshness-toggle-status--fresh {
+  background: rgba(44, 122, 93, 0.14);
+  color: #1f5b44;
+}
+
+.freshness-toggle-status--stale {
+  background: rgba(177, 78, 24, 0.22);
+  color: #7a2f12;
+}
+
+.freshness-toggle-status--unavailable {
+  background: rgba(166, 37, 37, 0.18);
+  color: #8f1f1f;
+}
+
+.freshness-toggle-status--unknown {
+  background: rgba(116, 105, 91, 0.18);
+  color: #52473d;
+}
+
+.freshness-detail {
+  margin-top: 10px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(33, 48, 40, 0.08);
+  background: linear-gradient(180deg, rgba(255, 250, 242, 0.94) 0%, rgba(246, 239, 227, 0.84) 100%);
+}
+
+.freshness-item--fresh .freshness-detail {
+  background: linear-gradient(180deg, rgba(235, 248, 238, 0.98) 0%, rgba(220, 239, 228, 0.9) 100%);
+}
+
+.freshness-item--stale .freshness-detail {
+  background: linear-gradient(180deg, rgba(255, 235, 214, 0.99) 0%, rgba(245, 203, 160, 0.94) 100%);
+  border-color: rgba(177, 78, 24, 0.24);
+}
+
+.freshness-item--unavailable .freshness-detail {
+  background: linear-gradient(180deg, rgba(255, 231, 231, 0.99) 0%, rgba(243, 188, 188, 0.94) 100%);
+  border-color: rgba(166, 37, 37, 0.24);
+}
+
+.freshness-item--unknown .freshness-detail {
+  background: linear-gradient(180deg, rgba(243, 237, 228, 0.99) 0%, rgba(219, 210, 198, 0.94) 100%);
+  border-color: rgba(116, 105, 91, 0.22);
+}
+
+.freshness-timestamp,
+.freshness-age,
+.freshness-attempt,
+.freshness-threshold,
+.freshness-empty {
+  margin: 0;
+}
+
+.freshness-timestamp {
+  margin-top: 12px;
+  font-size: 0.96rem;
+  color: var(--ink);
+}
+
+.freshness-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin-top: 12px;
+}
+
+.freshness-age,
+.freshness-attempt,
+.freshness-threshold,
+.freshness-empty {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.freshness-threshold {
+  margin-top: 10px;
+}
+
 .hero-copy,
 .card {
   backdrop-filter: blur(8px);
@@ -123,10 +270,16 @@ label span,
   gap: 20px;
 }
 
-.dashboard-nav {
+.dashboard-sidebar {
   align-self: start;
   position: sticky;
   top: 20px;
+  display: grid;
+  gap: 20px;
+}
+
+.dashboard-nav,
+.freshness-panel {
   padding: 24px 22px;
 }
 
@@ -592,6 +745,10 @@ canvas {
   }
 
   .dashboard-nav {
+    position: static;
+  }
+
+  .dashboard-sidebar {
     position: static;
   }
 

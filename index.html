@@ -25,14 +25,23 @@
     </header>
 
     <main class="dashboard-grid">
-      <aside class="dashboard-nav card card-accent">
-        <div>
-          <p class="section-label">Navigation</p>
-          <h2>Choose a species</h2>
-        </div>
-        <section class="nav-section">
-          <p class="nav-label">Species</p>
-          <div id="species-radio-group" class="species-radio-group" aria-label="Choose species"></div>
+      <aside class="dashboard-sidebar">
+        <section class="dashboard-nav card card-accent">
+          <div>
+            <p class="section-label">Navigation</p>
+            <h2>Choose a species</h2>
+          </div>
+          <section class="nav-section">
+            <p class="nav-label">Species</p>
+            <div id="species-radio-group" class="species-radio-group" aria-label="Choose species"></div>
+          </section>
+        </section>
+
+        <section class="freshness-panel card card-accent" aria-labelledby="freshness-panel-title">
+          <div class="freshness-panel-header">
+            <p id="freshness-panel-title" class="section-label">Data Freshness</p>
+          </div>
+          <div id="freshness-strip" class="freshness-strip"></div>
         </section>
       </aside>
 
