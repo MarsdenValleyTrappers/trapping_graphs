@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-23T03:53:58Z",
+  "generated_at": "2026-08-23T03:55:58Z",
   "project": {
     "name": "Marsden Valley Trapping Group",
     "about": {
@@ -8,7 +8,7 @@
       "source_format": ".md",
       "content_markdown": "# The Marsden Valley Trapping Group \n\nOur group runs community trapping activity in Marsden Valley New Zealand and uses this dashboard to publish public trapping trends from Trap.NZ data.\nFollow the group on [the Marsden Valley Trapping Group Facebook page](https://www.facebook.com/groups/991610803052734/).\n\nThis site focuses on simple views of catch history:\n\n- weekly catches for the selected species and period\n- same-species comparison across available years\n- summary totals and trend indicators for rolling periods and calendar years\n\nThe current dashboard is intended as a public summary view rather than a full operational analysis tool."
     },
-    "last_code_push_at": "2026-08-23T15:51:20+12:00"
+    "last_code_push_at": "2026-08-23T15:55:47+12:00"
   },
   "source": {
     "project": "Marsden Valley Trapping Group",
