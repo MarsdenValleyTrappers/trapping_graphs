@@ -65,21 +65,21 @@
     },
     "last_6_months": {
       "species_totals": {
-        "Rat": 131,
-        "Mouse": 285,
+        "Rat": 133,
+        "Mouse": 287,
         "Possum": 46,
         "Mustelid": 8,
-        "All Species": 476,
+        "All Species": 480,
         "South Island Robin": 35
       },
       "trend": {
         "Rat": {
           "direction": "down",
-          "delta": -120
+          "delta": -118
         },
         "Mouse": {
           "direction": "down",
-          "delta": -194
+          "delta": -192
         },
         "Possum": {
           "direction": "down",
@@ -91,7 +91,7 @@
         },
         "All Species": {
           "direction": "down",
-          "delta": -358
+          "delta": -354
         },
         "South Island Robin": {
           "direction": "up",
@@ -103,11 +103,11 @@
           "start": "2026-06-05",
           "end": "2026-12-05",
           "species_totals": {
-            "Rat": 131,
-            "Mouse": 285,
+            "Rat": 133,
+            "Mouse": 287,
             "Possum": 46,
             "Mustelid": 8,
-            "All Species": 476,
+            "All Species": 480,
             "South Island Robin": 35
           }
         },
@@ -127,21 +127,21 @@
     },
     "last_12_months": {
       "species_totals": {
-        "Rat": 531,
-        "Mouse": 688,
+        "Rat": 533,
+        "Mouse": 690,
         "Possum": 187,
         "Mustelid": 21,
-        "All Species": 1458,
+        "All Species": 1462,
         "South Island Robin": 72
       },
       "trend": {
         "Rat": {
           "direction": "down",
-          "delta": -120
+          "delta": -118
         },
         "Mouse": {
           "direction": "up",
-          "delta": 27
+          "delta": 29
         },
         "Possum": {
           "direction": "down",
@@ -153,7 +153,7 @@
         },
         "All Species": {
           "direction": "down",
-          "delta": -159
+          "delta": -155
         },
         "South Island Robin": {
           "direction": "up",
@@ -165,11 +165,11 @@
           "start": "2025-12-05",
           "end": "2026-12-05",
           "species_totals": {
-            "Rat": 531,
-            "Mouse": 688,
+            "Rat": 533,
+            "Mouse": 690,
             "Possum": 187,
             "Mustelid": 21,
-            "All Species": 1458,
+            "All Species": 1462,
             "South Island Robin": 72
           }
         },
@@ -571,21 +571,21 @@
     },
     "2026": {
       "species_totals": {
-        "Rat": 495,
-        "Mouse": 647,
+        "Rat": 497,
+        "Mouse": 649,
         "Possum": 171,
         "Mustelid": 18,
-        "All Species": 1361,
+        "All Species": 1365,
         "South Island Robin": 69
       },
       "trend": {
         "Rat": {
           "direction": "down",
-          "delta": -148
+          "delta": -146
         },
         "Mouse": {
-          "direction": "flat",
-          "delta": 0
+          "direction": "up",
+          "delta": 2
         },
         "Possum": {
           "direction": "down",
@@ -597,7 +597,7 @@
         },
         "All Species": {
           "direction": "down",
-          "delta": -202
+          "delta": -198
         },
         "South Island Robin": {
           "direction": "up",
@@ -609,11 +609,11 @@
           "start": "2026-01-01",
           "end": "2026-12-05",
           "species_totals": {
-            "Rat": 495,
-            "Mouse": 647,
+            "Rat": 497,
+            "Mouse": 649,
             "Possum": 171,
             "Mustelid": 18,
-            "All Species": 1361,
+            "All Species": 1365,
             "South Island Robin": 69
           }
         },

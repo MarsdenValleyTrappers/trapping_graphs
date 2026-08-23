@@ -4621,11 +4621,11 @@
       "week_end": "2026-08-23",
       "year": 2026,
       "species": {
-        "Rat": 3,
-        "Mouse": 15,
+        "Rat": 5,
+        "Mouse": 17,
         "Possum": 1,
         "Mustelid": 0,
-        "All Species": 19,
+        "All Species": 23,
         "South Island Robin": 1
       }
     },
