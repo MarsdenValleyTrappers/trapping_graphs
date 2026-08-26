@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T04:33:42Z",
+  "generated_at": "2026-08-26T14:02:32Z",
   "project": {
     "name": "Marsden Valley Trapping Group",
     "about": {
@@ -22,8 +22,8 @@
         "file_count": 8,
         "included_in_publish": true,
         "last_attempt_status": "fresh_fetch",
-        "last_attempted_at_utc": "2026-08-26T04:02:37Z",
-        "last_successful_fetch_at_utc": "2026-08-26T04:02:37Z",
+        "last_attempted_at_utc": "2026-08-26T14:02:13Z",
+        "last_successful_fetch_at_utc": "2026-08-26T14:02:13Z",
         "refresh_mode": "merge_recent",
         "query_names": [
           "recent_records",
@@ -34,7 +34,7 @@
           "age_days": 0.0,
           "fresh_days": 7,
           "stale_fallback_days": 10,
-          "reference_at_utc": "2026-08-26T04:02:37Z"
+          "reference_at_utc": "2026-08-26T14:02:13Z"
         }
       },
       "bird_sightings": {
@@ -44,15 +44,15 @@
         "selected_source_reason": "fresh_api_fetch",
         "included_in_publish": true,
         "last_attempt_status": "fresh_fetch",
-        "last_attempted_at_utc": "2026-08-26T04:02:49Z",
-        "last_successful_fetch_at_utc": "2026-08-26T04:02:49Z",
+        "last_attempted_at_utc": "2026-08-26T14:02:29Z",
+        "last_successful_fetch_at_utc": "2026-08-26T14:02:29Z",
         "row_count": 123,
         "freshness": {
           "status": "fresh",
           "age_days": 0.0,
           "fresh_days": 21,
           "stale_fallback_days": 31,
-          "reference_at_utc": "2026-08-26T04:02:49Z"
+          "reference_at_utc": "2026-08-26T14:02:29Z"
         }
       }
     },
