@@ -235,10 +235,17 @@ function getPeriodOptions(metadata) {
   return metadata.years.map(String);
 }
 
+function getRollingPeriodEndDate(metadata) {
+  if (metadata && metadata.generated_at) {
+    return new Date(metadata.generated_at);
+  }
+  return new Date();
+}
+
 function buildWeeklyWindow(periodKey, metadata) {
   const periodDefinition = (metadata.periods || []).find((period) => period.key === periodKey);
-  const endDate = new Date(metadata.date_range.end);
   if (periodDefinition && periodDefinition.type === "rolling_months") {
+    const endDate = getRollingPeriodEndDate(metadata);
     const startDate = new Date(endDate);
     startDate.setMonth(startDate.getMonth() - periodDefinition.months);
     return { startDate, endDate };
@@ -549,9 +556,13 @@ function bindComparisonControls() {
 
 function updateTitles(species, periodKey, weeks) {
   const speciesLabel = getSpeciesLabel(species);
+  const { endDate } = buildWeeklyWindow(periodKey, state.metadata);
   document.getElementById("weekly-title").textContent = `${speciesLabel} in ${formatPeriodLabel(periodKey)}`;
   if (weeks.length > 0) {
-    document.getElementById("weekly-subtitle").textContent = `${formatFriendlyDate(weeks[0].week_start)} to ${formatFriendlyDate(weeks[weeks.length - 1].week_end)}`;
+    const displayedEndDate = endDate < new Date(weeks[weeks.length - 1].week_end)
+      ? endDate
+      : new Date(weeks[weeks.length - 1].week_end);
+    document.getElementById("weekly-subtitle").textContent = `${formatFriendlyDate(weeks[0].week_start)} to ${formatFriendlyDate(displayedEndDate)}`;
   } else {
     document.getElementById("weekly-subtitle").textContent = "No data in selected period";
   }
@@ -908,7 +919,7 @@ function populateMeta() {
   const infoButton = document.getElementById("project-info-button");
 
   document.getElementById("hero-project-name").textContent = projectName;
-  document.getElementById("hero-title").textContent = `Trapping trends ${formatFriendlyDate(state.metadata.date_range.start)} to ${formatFriendlyDate(state.metadata.date_range.end)}`;
+  document.getElementById("hero-title").textContent = `Trapping trends ${formatFriendlyDate(state.metadata.date_range.start)} to ${formatFriendlyDate(getRollingPeriodEndDate(state.metadata))}`;
   document.getElementById("hero-published").textContent = `Published ${formatFriendlyDateTime(state.metadata.generated_at)}`;
   renderFreshnessPanel();
 
