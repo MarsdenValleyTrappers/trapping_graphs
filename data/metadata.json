@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-27T20:45:14Z",
+  "generated_at": "2026-08-27T20:45:52Z",
   "project": {
     "name": "Marsden Valley Trapping Group",
     "about": {
@@ -22,8 +22,8 @@
         "file_count": 8,
         "included_in_publish": true,
         "last_attempt_status": "fresh_fetch",
-        "last_attempted_at_utc": "2026-08-26T14:02:13Z",
-        "last_successful_fetch_at_utc": "2026-08-26T14:02:13Z",
+        "last_attempted_at_utc": "2026-08-27T20:45:32Z",
+        "last_successful_fetch_at_utc": "2026-08-27T20:45:32Z",
         "refresh_mode": "merge_recent",
         "query_names": [
           "recent_records",
@@ -34,7 +34,7 @@
           "age_days": 0.0,
           "fresh_days": 7,
           "stale_fallback_days": 10,
-          "reference_at_utc": "2026-08-26T14:02:13Z"
+          "reference_at_utc": "2026-08-27T20:45:32Z"
         }
       },
       "bird_sightings": {
@@ -44,15 +44,15 @@
         "selected_source_reason": "fresh_api_fetch",
         "included_in_publish": true,
         "last_attempt_status": "fresh_fetch",
-        "last_attempted_at_utc": "2026-08-26T14:02:29Z",
-        "last_successful_fetch_at_utc": "2026-08-26T14:02:29Z",
-        "row_count": 123,
+        "last_attempted_at_utc": "2026-08-27T20:45:49Z",
+        "last_successful_fetch_at_utc": "2026-08-27T20:45:49Z",
+        "row_count": 131,
         "freshness": {
           "status": "fresh",
           "age_days": 0.0,
           "fresh_days": 21,
           "stale_fallback_days": 31,
-          "reference_at_utc": "2026-08-26T14:02:29Z"
+          "reference_at_utc": "2026-08-27T20:45:49Z"
         }
       }
     },
@@ -71,7 +71,8 @@
     "Possum",
     "Mustelid",
     "All Species",
-    "South Island Robin"
+    "South Island Robin",
+    "Tomtit"
   ],
   "species_definitions": [
     {
@@ -107,6 +108,12 @@
     {
       "key": "South Island Robin",
       "label": "SI Robin",
+      "measure_noun": "observations",
+      "is_pest": false
+    },
+    {
+      "key": "Tomtit",
+      "label": "Tomtit",
       "measure_noun": "observations",
       "is_pest": false
     }
