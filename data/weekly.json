@@ -4998,6 +4998,20 @@
         "South Island Robin": 1,
         "Tomtit": 0
       }
+    },
+    {
+      "week_start": "2026-08-31",
+      "week_end": "2026-09-06",
+      "year": 2026,
+      "species": {
+        "Rat": 0,
+        "Mouse": 4,
+        "Possum": 0,
+        "Mustelid": 0,
+        "All Species": 4,
+        "South Island Robin": 0,
+        "Tomtit": 0
+      }
     }
   ]
 }
