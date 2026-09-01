@@ -5005,11 +5005,11 @@
       "year": 2026,
       "species": {
         "Rat": 0,
-        "Mouse": 4,
-        "Possum": 0,
+        "Mouse": 5,
+        "Possum": 1,
         "Mustelid": 0,
-        "All Species": 4,
-        "South Island Robin": 0,
+        "All Species": 6,
+        "South Island Robin": 1,
         "Tomtit": 0
       }
     }
