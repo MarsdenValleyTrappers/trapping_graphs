@@ -5005,10 +5005,10 @@
       "year": 2026,
       "species": {
         "Rat": 1,
-        "Mouse": 10,
+        "Mouse": 15,
         "Possum": 1,
         "Mustelid": 0,
-        "All Species": 12,
+        "All Species": 17,
         "South Island Robin": 1,
         "Tomtit": 0
       }
