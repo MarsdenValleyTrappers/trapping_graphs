@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-08T16:13:19Z",
+  "generated_at": "2026-09-09T16:07:16Z",
   "project": {
     "name": "Marsden Valley Trapping Group",
     "about": {
@@ -22,8 +22,8 @@
         "file_count": 8,
         "included_in_publish": true,
         "last_attempt_status": "fresh_fetch",
-        "last_attempted_at_utc": "2026-09-08T16:12:59Z",
-        "last_successful_fetch_at_utc": "2026-09-08T16:12:59Z",
+        "last_attempted_at_utc": "2026-09-09T16:06:59Z",
+        "last_successful_fetch_at_utc": "2026-09-09T16:06:59Z",
         "refresh_mode": "merge_recent",
         "query_names": [
           "recent_records",
@@ -34,27 +34,26 @@
           "age_days": 0.0,
           "fresh_days": 7,
           "stale_fallback_days": 10,
-          "reference_at_utc": "2026-09-08T16:12:59Z"
+          "reference_at_utc": "2026-09-09T16:06:59Z"
         }
       },
       "bird_sightings": {
         "key": "bird_sightings",
         "kind": "csv",
         "selected_source_path": "data/raw/bird-sightings-api.csv",
-        "selected_source_reason": "cached_csv_fallback",
+        "selected_source_reason": "fresh_api_fetch",
         "included_in_publish": true,
-        "last_attempt_status": "fallback",
-        "last_attempted_at_utc": "2026-09-08T16:13:15Z",
-        "last_successful_fetch_at_utc": "2026-09-07T17:28:21Z",
-        "row_count": 133,
+        "last_attempt_status": "fresh_fetch",
+        "last_attempted_at_utc": "2026-09-09T16:07:14Z",
+        "last_successful_fetch_at_utc": "2026-09-09T16:07:14Z",
+        "row_count": 136,
         "freshness": {
           "status": "fresh",
-          "age_days": 0.948,
+          "age_days": 0.0,
           "fresh_days": 21,
           "stale_fallback_days": 31,
-          "reference_at_utc": "2026-09-07T17:28:21Z"
-        },
-        "fallback_age_days": 0.948
+          "reference_at_utc": "2026-09-09T16:07:14Z"
+        }
       }
     },
     "additional_private_sources": [
@@ -199,7 +198,7 @@
   ],
   "date_range": {
     "start": "2019-09-13",
-    "end": "2026-09-08"
+    "end": "2026-09-09"
   },
   "notes": {
     "includes_bird_sightings": true,
