@@ -5032,11 +5032,11 @@
       "week_end": "2026-09-20",
       "year": 2026,
       "species": {
-        "Rat": 3,
-        "Mouse": 18,
+        "Rat": 7,
+        "Mouse": 22,
         "Possum": 4,
         "Mustelid": 0,
-        "All Species": 26,
+        "All Species": 34,
         "South Island Robin": 1,
         "Tomtit": 0
       }
