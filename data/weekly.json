@@ -5076,9 +5076,9 @@
       "species": {
         "Rat": 0,
         "Mouse": 0,
-        "Possum": 0,
+        "Possum": 1,
         "Mustelid": 0,
-        "All Species": 0,
+        "All Species": 1,
         "South Island Robin": 4,
         "Tomtit": 0
       }
