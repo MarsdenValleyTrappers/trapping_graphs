@@ -5102,12 +5102,12 @@
       "week_end": "2026-10-25",
       "year": 2026,
       "species": {
-        "Rat": 2,
-        "Mouse": 2,
-        "Possum": 1,
+        "Rat": 4,
+        "Mouse": 18,
+        "Possum": 2,
         "Mustelid": 0,
-        "All Species": 5,
-        "South Island Robin": 0,
+        "All Species": 24,
+        "South Island Robin": 1,
         "Tomtit": 0
       }
     }
