@@ -3562,11 +3562,11 @@
       "week_end": "2024-09-15",
       "year": 2024,
       "species": {
-        "Rat": 9,
+        "Rat": 8,
         "Mouse": 57,
         "Possum": 1,
         "Mustelid": 0,
-        "All Species": 68,
+        "All Species": 67,
         "South Island Robin": 0,
         "Tomtit": 0
       }
@@ -4137,10 +4137,10 @@
       "year": 2025,
       "species": {
         "Rat": 13,
-        "Mouse": 14,
+        "Mouse": 13,
         "Possum": 2,
         "Mustelid": 0,
-        "All Species": 31,
+        "All Species": 30,
         "South Island Robin": 0,
         "Tomtit": 0
       }
@@ -4795,10 +4795,10 @@
       "year": 2026,
       "species": {
         "Rat": 30,
-        "Mouse": 33,
+        "Mouse": 34,
         "Possum": 4,
         "Mustelid": 1,
-        "All Species": 68,
+        "All Species": 69,
         "South Island Robin": 4,
         "Tomtit": 0
       }
