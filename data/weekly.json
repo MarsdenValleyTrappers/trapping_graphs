@@ -5132,10 +5132,24 @@
       "species": {
         "Rat": 9,
         "Mouse": 17,
-        "Possum": 5,
+        "Possum": 6,
         "Mustelid": 0,
-        "All Species": 31,
-        "South Island Robin": 0,
+        "All Species": 32,
+        "South Island Robin": 1,
+        "Tomtit": 0
+      }
+    },
+    {
+      "week_start": "2026-11-09",
+      "week_end": "2026-11-15",
+      "year": 2026,
+      "species": {
+        "Rat": 1,
+        "Mouse": 1,
+        "Possum": 0,
+        "Mustelid": 0,
+        "All Species": 2,
+        "South Island Robin": 1,
         "Tomtit": 0
       }
     }
